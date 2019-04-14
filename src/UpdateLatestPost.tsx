@@ -3,7 +3,6 @@ import { Mutation } from 'react-apollo';
 import LATEST_POST_MUTATION from './mutations/latestPost';
 import LATEST_POST_QUERY from './queries/latestPost';
 import { LatestPostMutation, LatestPostMutationVariables } from './mutations/__generated__/LatestPostMutation';
-import { LatestPostQuery } from './queries/__generated__/LatestPostQuery';
 
 export interface UpdateLatestPostProps {
     latestPost: string;
@@ -18,11 +17,11 @@ export default (props: UpdateLatestPostProps) => {
     return (<Mutation<LatestPostMutation, LatestPostMutationVariables>
         mutation={LATEST_POST_MUTATION}
         update={(cache, result) => {
-            if ((result.data as LatestPostQuery).latestPost) {
+            if ((result.data as LatestPostMutation).latestPost) {
                 // Update the Apollo cache
                 cache.writeQuery({
                     query: LATEST_POST_QUERY,
-                    data: { latestPost: (result.data as LatestPostQuery).latestPost }
+                    data: { latestPost: (result.data as LatestPostMutation).latestPost }
                 });
             }
         }}>
