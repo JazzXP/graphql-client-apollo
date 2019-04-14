@@ -7,7 +7,12 @@
     "@types/node": "11.13.0",
     "@types/react": "16.8.12",
     "@types/react-dom": "16.8.3",
+    "apollo": "^2.8.1",
+    "apollo-boost": "^0.3.1",
+    "graphql": "^14.2.1",
+    "graphql-tag": "^2.10.1",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.3",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
     "typescript": "3.4.1"
@@ -16,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "updateSchema": "apollo schema:download --endpoint http://localhost:8090/graphql schema.json",
+    "generateTypes": "apollo client:codegen --target typescript --no-addTypename --localSchemaFile=schema.json"
   },
   "eslintConfig": {
     "extends": "react-app"
